@@ -12,7 +12,7 @@
 
 ## Suggested Integration
 
-## Home Assistant Configuration
+### Home Assistant Configuration
 
 ```yaml
 panel_iframe:
