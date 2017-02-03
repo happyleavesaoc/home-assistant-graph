@@ -2,6 +2,10 @@
 
 ![Graph](graph-example.png)
 
+## Demo
+
+https://happyleavesaoc.github.io/hagraph.html
+
 ## Install
 
 `pip install hagraph`
