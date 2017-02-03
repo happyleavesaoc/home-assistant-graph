@@ -22,7 +22,7 @@ panel_iframe:
     url: "https://your.hass/local/graph.html"
 
 shell_command:
-  generate_graph: "python3 -m hagraph -i <path/to/configuration.yaml> -o <path/to/output.[dot/png/jpg/svg/etc]>"
+  generate_graph: "python3 -m hagraph -i <path/to/configuration.yaml> -o <path/to/www/>graph.svg"
 
 automation:
   - alias: Generate graph
