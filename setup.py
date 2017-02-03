@@ -9,7 +9,7 @@ setup(
     author='happyleaves',
     author_email='happyleaves.tfr@gmail.com',
     packages=['hagraph'],
-    install_requires=['networkx==1.11', 'homeassistant>=0.37'],
+    install_requires=['networkx==1.11', 'homeassistant>=0.37', 'pygraphviz>=1.4rc1'],
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
