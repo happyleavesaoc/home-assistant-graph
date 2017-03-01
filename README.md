@@ -2,9 +2,24 @@
 
 ![Graph](graph-example.png)
 
+## Demo
+
+https://happyleavesaoc.github.io/hagraph.html
+
 ## Install
 
+Install `graphviz`:
+```
+yum install graphviz graphviz-devel      # RHEL/CentOS
+apt-get install graphviz graphviz-dev    # Ubuntu/Rasbian
+```
+
+Install `hagraph`:
 `pip install hagraph`
+
+Errors about `pygraphviz`? Try:
+
+`pip install git+https://github.com/pygraphviz/pygraphviz.git --install-option="--include-path=/usr/include/graphviz" --install-option="--library-path=/usr/lib/graphviz/"`
 
 ## Run
 
