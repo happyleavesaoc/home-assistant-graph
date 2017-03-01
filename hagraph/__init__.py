@@ -91,6 +91,8 @@ def get_entity_ids(obj):
         return get_entity_ids(obj['data'])
     if 'data_template' in obj:
         return get_entity_ids(obj['data_template'])
+    if 'event_data' in obj:
+        return get_entity_ids(obj['event_data'])
     if const.ATTR_ENTITY_ID not in obj:
         return []
     if isinstance(obj[const.ATTR_ENTITY_ID], list):
@@ -158,14 +160,18 @@ def add_group(name, data, graph):
 def add_alexa(name, data, graph):
     """Add Alexa intent to graph."""
     intent_entity = get_entity_id('alexa', name)
-    target = entities_or_service(data['action'])[0]
-    graph.add_edge(intent_entity, target, label=get_service(data['action']))
+    check = entities_or_service(data['action'])
+    if len(check) > 0:
+        target = check[0]
+        graph.add_edge(intent_entity, target, label=get_service(data['action']))
 
 
 def add_script(name, data, graph):
     """Add script to graph."""
     script_entity = get_entity_id('script', name)
     for step in data['sequence']:
+        if const.ATTR_SERVICE not in step and 'service_template' not in step:
+            continue
         for target in entities_or_service(step):
             graph.add_edge(script_entity, target, label=get_service(step))
 
