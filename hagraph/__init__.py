@@ -160,6 +160,8 @@ def add_group(name, data, graph):
 def add_alexa(name, data, graph):
     """Add Alexa intent to graph."""
     intent_entity = get_entity_id('alexa', name)
+    if 'action' not in data:
+        return
     check = entities_or_service(data['action'])
     if len(check) > 0:
         target = check[0]
@@ -184,7 +186,7 @@ def add_automation(data, graph):
             sources += entities_or_platform(trigger)
     else:
         sources = entities_or_platform(data['trigger'])
-    if isinstance(data['action'], list):
+    if 'action' in data and isinstance(data['action'], list):
         for action in data['action']:
             for target in entities_or_service(action):
                 for source in sources:
