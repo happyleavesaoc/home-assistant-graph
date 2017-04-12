@@ -1,4 +1,4 @@
-# home-assistant-graph
+# home-assistant-graph [![PyPI version](https://badge.fury.io/py/hagraph.svg)](https://badge.fury.io/py/hagraph)
 
 ![Graph](graph-example.png)
 
