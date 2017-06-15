@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='hagraph',
-    version='1.0.3',
+    version='1.0.4',
     description='Graph Home Assistant configurations',
     url='https://github.com/happyleavesaoc/home-assistant-graph/',
     license='MIT',

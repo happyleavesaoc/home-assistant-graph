@@ -171,11 +171,19 @@ def add_alexa(name, data, graph):
 def add_script(name, data, graph):
     """Add script to graph."""
     script_entity = get_entity_id('script', name)
-    for step in data['sequence']:
-        if const.ATTR_SERVICE not in step and 'service_template' not in step:
-            continue
-        for target in entities_or_service(step):
-            graph.add_edge(script_entity, target, label=get_service(step))
+    if isinstance(data['sequence'], list):
+        for step in data['sequence']:
+            add_script_step(step, graph, script_entity)
+    else:
+       add_script_step(data['sequence'], graph, script_entity)
+
+
+def add_script_step(step, graph, script_entity):
+    """Add script step."""
+    if const.ATTR_SERVICE not in step and 'service_template' not in step:
+        return
+    for target in entities_or_service(step):
+        graph.add_edge(script_entity, target, label=get_service(step))
 
 
 def add_automation(data, graph):
@@ -188,6 +196,8 @@ def add_automation(data, graph):
         sources = entities_or_platform(data['trigger'])
     if 'action' in data and isinstance(data['action'], list):
         for action in data['action']:
+            if 'service' not in action:
+                continue
             for target in entities_or_service(action):
                 for source in sources:
                     graph.add_edge(source, target, label=get_service(action))
